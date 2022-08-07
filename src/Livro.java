@@ -70,8 +70,24 @@ public class Livro {
         return quantidadeDeExemplares;
     }
 
-    public void setQuantidadeDeExemplares(int quantidadeDeExemplares) {
+    private void setQuantidadeDeExemplares(int quantidadeDeExemplares) {
         this.quantidadeDeExemplares = quantidadeDeExemplares;
+    }
+
+    public void removerExemplar(int n) {
+        setQuantidadeDeExemplares(getQuantidadeDeExemplares() - n);
+    }
+
+    public void adicionarExemplar(int n) {
+        setQuantidadeDeExemplares(getQuantidadeDeExemplares() + n);
+    }
+
+    public boolean exemplarEstaDisponivel(){
+        if(quantidadeDeExemplares >= 1){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }
