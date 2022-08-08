@@ -1,4 +1,7 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.EnumMap;
 
@@ -41,12 +44,26 @@ public class AppBiblioteca {
             }
         }
 
+        //dados para gerar multa no empréstimo
+        LocalDateTime dataEmprestimoFake = LocalDateTime.now();
+        LocalDateTime dataEmprestimoPrevistaFake = LocalDateTime.now();
+        LocalDateTime dataEntregaRealFake = LocalDateTime.now();
+
+        dataEmprestimoFake = dataEmprestimoFake.minusDays(18);
+        dataEmprestimoPrevistaFake = dataEmprestimoPrevistaFake.minusDays(10);
+
+
+
         //GERAR EMPRESTIMO
         var emprestimo = new Emprestimo(null, null, null, 0);
+        var emprestimoAtrasado = new Emprestimo(dataEmprestimoFake, dataEmprestimoPrevistaFake, dataEntregaRealFake, 1);
         emprestimo.realizarEmprestimo(usuario, livro, exemplar3, busca);
         emprestimo.realizarEmprestimo(usuario, livro, exemplar2, busca);
         emprestimo.realizarEmprestimo(usuario, livro, exemplar2, busca);
         emprestimo.devolucaoDeEmprestimo(usuario, livro, exemplar, busca);
+        emprestimoAtrasado.devolucaoDeEmprestimo(usuario, livro, exemplar3, busca); // <= problema, pode-se gerar uma devolucao de um exemplar que foi gerado por outro emprestimo
+
+
 
 
 //        // PESQUISA DE LIVRO POR AUTOR

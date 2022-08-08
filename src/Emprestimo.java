@@ -1,47 +1,48 @@
-import java.time.Duration;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Emprestimo {
 
-    private Date dataDeEmprestimo;
-    private Date dataPrevistaDeDevolucao;
-    private Date dataDeEntregaReal;
+    private LocalDateTime dataDeEmprestimo;
+    private LocalDateTime dataPrevistaDeDevolucao;
+    private LocalDateTime dataDeEntregaReal;
     private int situacao = 0;
 
     private int duracaoEmprestimo = 15;
 
-    public Emprestimo(Date dataDeEmprestimo, Date dataPrevistaDeDevolucao, Date dataDeEntregaReal, int situacao) {
+    public Emprestimo(LocalDateTime dataDeEmprestimo, LocalDateTime dataPrevistaDeDevolucao, LocalDateTime dataDeEntregaReal, int situacao) {
         this.dataDeEmprestimo = dataDeEmprestimo;
         this.dataPrevistaDeDevolucao = dataPrevistaDeDevolucao;
         this.dataDeEntregaReal = dataDeEntregaReal;
         this.situacao = situacao;
     }
 
-    public Date getDataDeEmprestimo() {
+    public LocalDateTime getDataDeEmprestimo() {
         return dataDeEmprestimo;
     }
 
-    public void setDataDeEmprestimo(Date dataDeEmprestimo) {
+    public void setDataDeEmprestimo(LocalDateTime dataDeEmprestimo) {
         this.dataDeEmprestimo = dataDeEmprestimo;
     }
 
-    public Date getDataPrevistaDeDevolucao() {
+    public LocalDateTime getDataPrevistaDeDevolucao() {
         return dataPrevistaDeDevolucao;
     }
 
-    public void setDataPrevistaDeDevolucao(Date dataPrevistaDeDevolucao) {
+    public void setDataPrevistaDeDevolucao(LocalDateTime dataPrevistaDeDevolucao) {
         this.dataPrevistaDeDevolucao = dataPrevistaDeDevolucao;
     }
 
-    public Date getDataDeEntregaReal() {
+    public LocalDateTime getDataDeEntregaReal() {
         return dataDeEntregaReal;
     }
 
-    public void setDataDeEntregaReal(Date dataDeEntregaReal) {
+    public void setDataDeEntregaReal(LocalDateTime dataDeEntregaReal) {
         this.dataDeEntregaReal = dataDeEntregaReal;
     }
 
@@ -62,15 +63,17 @@ public class Emprestimo {
     }
 
     //metodo para geração de datas no empréstimo - data atual e data de devolução
-    public void gerarDatasEmprestimo(Date data) {
+    public void gerarDatasEmprestimo(LocalDateTime data) {
         //setar data atual
         setDataDeEmprestimo(data);
 
         //gerar duracao do emprestimo e adicionar na data
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(data);
-        cal.add(Calendar.DATE, getDuracaoEmprestimo());
-        data = cal.getTime();
+        data.plusDays(getDuracaoEmprestimo());
+
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(data);
+//        cal.add(Calendar.DATE, getDuracaoEmprestimo());
+//        data = cal.getTime();
 
         //setar data de devolucao
         setDataPrevistaDeDevolucao(data);
@@ -78,7 +81,7 @@ public class Emprestimo {
 
     //metodo para realização do empréstimo
     public void realizarEmprestimo(Usuario user, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
-        Date dataEmprestimo = new Date();
+        LocalDateTime dataEmprestimo = LocalDateTime.now();
 
         if (livro.exemplarEstaDisponivel() && exemplar.isEmprestada() == false) {
 
@@ -98,15 +101,19 @@ public class Emprestimo {
         }
     }
 
-    public void emprestmoDevolvido(Date data) {
+    public void emprestmoDevolvido(LocalDateTime data) {
         setDataDeEntregaReal(data);
         setSituacao(0);
     }
 
+
+    TimeUnit timeUnit;
+
+
     public void devolucaoDeEmprestimo(Usuario usuario, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
         if (getSituacao() == 1) {
 
-            Date dataDevolucao = new Date();
+            LocalDateTime dataDevolucao = LocalDateTime.now();
             livro.adicionarExemplar(1);
             emprestmoDevolvido(dataDevolucao);
             exemplar.setEmprestada(false);
@@ -120,8 +127,10 @@ public class Emprestimo {
 
         }
         try {
-            if (dataPrevistaDeDevolucao.before(dataDeEntregaReal)) {
-                long diasDeAtraso = ChronoUnit.DAYS.between((Temporal) dataPrevistaDeDevolucao, (Temporal) dataDeEntregaReal);
+            if (dataPrevistaDeDevolucao.isBefore(dataDeEntregaReal)) {
+                Period tempoAtraso = Period.between(dataPrevistaDeDevolucao.toLocalDate(), dataDeEntregaReal.toLocalDate());
+                int diasDeAtraso = tempoAtraso.getDays();
+                System.out.println(diasDeAtraso);
                 double multa = diasDeAtraso * 0.50;
                 System.out.println("Essa devolução gerou uma multa de " + multa + " reais");
             }
@@ -129,4 +138,5 @@ public class Emprestimo {
 
         }
     }
+
 }
