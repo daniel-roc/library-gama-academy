@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class AppBiblioteca {
@@ -14,8 +15,6 @@ public class AppBiblioteca {
         var exemplar = new Exemplar(1, true, false, livro, autor);
         var exemplar2 = new Exemplar(2, true, false, livro2, autor2);
         var exemplar3 = new Exemplar(3, true, false, livro, autor);
-
-        System.out.println(livro.getQuantidadeDeExemplares());
 
         // LISTA DE EXEMPLARES PARA PESQUISA
         ArrayList<Exemplar> busca = new ArrayList<Exemplar>();
@@ -37,9 +36,32 @@ public class AppBiblioteca {
 
         for (Exemplar exemplarPesquisa : busca) {
             if (exemplarPesquisa.getLivro().contains(pesquisaTitulo)) {
-                System.out.println("Título: " +exemplarPesquisa.getLivro() + " - Autor: " + exemplarPesquisa.getAutor() + " - Quantidade de exemplares disponíveis: " + exemplarPesquisa.getQuantidadeDeExemplares());
+                System.out.println("Título: " + exemplarPesquisa.getLivro() + " - Autor: " + exemplarPesquisa.getAutor() + " - Quantidade de exemplares disponíveis: " + exemplarPesquisa.getQuantidadeDeExemplares());
             }
         }
+
+        //dados para gerar multa no empréstimo
+        LocalDateTime dataEmprestimoFake = LocalDateTime.now();
+        LocalDateTime dataEmprestimoPrevistaFake = LocalDateTime.now();
+        LocalDateTime dataEntregaRealFake = LocalDateTime.now();
+
+        dataEmprestimoFake = dataEmprestimoFake.minusDays(18);
+        dataEmprestimoPrevistaFake = dataEmprestimoPrevistaFake.minusDays(10);
+
+
+
+        //GERAR EMPRESTIMO
+        var emprestimo = new Emprestimo();
+        var emprestimoAtrasado = new Emprestimo(dataEmprestimoFake, dataEmprestimoPrevistaFake, dataEntregaRealFake, 1);
+        emprestimo.realizarEmprestimo(usuario, livro, exemplar3, busca); // emprestimo - exemplar3 - dia 5 pego - dia 20 entrega
+        emprestimo.realizarEmprestimo(usuario, livro2, exemplar2, busca);
+//        emprestimo.realizarEmprestimo(usuario, livro, exemplar2, busca);
+//        emprestimo.realizarEmprestimo(usuario, livro, exemplar2, busca);
+//        emprestimo.devolucaoDeEmprestimo(usuario, livro, exemplar, busca);
+        emprestimoAtrasado.devolucaoDeEmprestimo(usuario, livro, exemplar3, busca); // <= problema, pode-se gerar uma devolucao de um exemplar que foi gerado por outro emprestimo
+
+
+
 
 //        // PESQUISA DE LIVRO POR AUTOR
 //        String pesquisaAutor = "Daniel Silva";
@@ -47,31 +69,32 @@ public class AppBiblioteca {
 //        System.out.println(resultado);
 
         // EMPRÉSTIMO DE LIVRO
-        if (exemplar.isCativa() && livro.getQuantidadeDeExemplares() >= 1) {
+//        if (exemplar.isCativa() && livro.getQuantidadeDeExemplares() >= 1) {
+//
+//
+//
+//            System.out.println("Sr. "+ usuario.getNome() + ", o exemplar do livro '" + livro.getTitulo() + "' está emprestado até: "
+//                    + emprestimo.getDataPrevistaDeDevolucao());
+//
+//            emprestimo.realizarEmprestimo(usuario, livro, exemplar, busca);
+//
+//            boolean livroDevolvido = false;
+//
+//            if (livroDevolvido) {
+//                emprestimo.devolucaoDeEmprestimo(livro, exemplar, "05/08/2022");
+//                System.out.println("Exemplar devolvido em: " + emprestimo.getDataDeEntregaReal());
+//            } else {
+//                System.out.println("Livro segue emprestado!");
+//            }
+//
+//        } else {
+//
+//            System.out.println("Exemplar não disponível!");
+//        }
+//
+//        System.out.println("Total de exemplares disponíveis: " + livro.getQuantidadeDeExemplares());
+//
+//        }
 
-            var emprestimo = new Emprestimo("30/07/2022", "01/08/2022", null, 1);
-
-            System.out.println("Sr. "+ usuario.getNome() + ", o exemplar do livro '" + livro.getTitulo() + "' está emprestado até: "
-                    + emprestimo.getDataPrevistaDeDevolucao());
-
-            emprestimo.realizarEmprestimo(livro, exemplar);
-
-            boolean livroDevolvido = false;
-
-            if (livroDevolvido) {
-                emprestimo.devolucaoDeEmprestimo(livro, exemplar, "05/08/2022");
-                System.out.println("Exemplar devolvido em: " + emprestimo.getDataDeEntregaReal());
-            } else {
-                System.out.println("Livro segue emprestado!");
-            }
-
-        } else {
-
-            System.out.println("Exemplar não disponível!");
         }
-
-        System.out.println("Total de exemplares disponíveis: " + livro.getQuantidadeDeExemplares());
-
-        }
-
     }

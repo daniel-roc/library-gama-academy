@@ -1,6 +1,7 @@
 
 public class Exemplar {
 
+
     private int codigo;
     private boolean cativo;
     private boolean emprestada;
@@ -14,7 +15,7 @@ public class Exemplar {
         this.livro = livro;
         this.autor = autor;
 
-        livro.setQuantidadeDeExemplares(livro.getQuantidadeDeExemplares() + 1);
+        livro.adicionarExemplar(1);
     }
 
     public int getCodigo() {
