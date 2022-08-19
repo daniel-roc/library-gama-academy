@@ -15,7 +15,7 @@
 
 ## **Apresentação**
 
-A livraria TopBUG é um sistema de biblioteca para cumprir o desafio proposto no curso de QE&A Automation Academy da [Gama Academy](https://www.gama.academy/)em parceria com a [Cognizant](https://www.cognizant.com/us/en).
+A livraria TopBUG é um sistema de biblioteca para cumprir o desafio proposto no curso de QE&A Automation Academy da [Gama Academy](https://www.gama.academy/) em parceria com a [Cognizant](https://www.cognizant.com/us/en).
 
 </br>
 </br>
