@@ -6,7 +6,7 @@ public class AppBiblioteca {
     public static void main(String[] args) {
 
         // DECLARAÇÃO DE VARIÁVEIS
-        var usuario = new Usuario("Daniel", "12345678999", "11 94548-4449", "M282214");
+        var usuario = new Cliente("Daniel", "email@dominio.com.br", "1199999-9999", "111222333-88", "44555666X", "Rua da rua, numero, bairro, cidade, UF", "password@123");
 
         var autor = new Autor("Roger Lincoln");
         var livro = new Livro("Um dia antes de amanhã", autor, "20/05/2022", 2, "Ed. Livro", "987654123");

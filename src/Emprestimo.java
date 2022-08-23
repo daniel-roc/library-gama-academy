@@ -94,7 +94,7 @@ public class Emprestimo {
     }
 
     //metodo para realização do empréstimo
-    public void realizarEmprestimo(Usuario user, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
+    public void realizarEmprestimo(Cliente user, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
         LocalDateTime dataEmprestimo = LocalDateTime.now();
         if(isDataNull()){
             if (livro.exemplarEstaDisponivel() && exemplar.isEmprestada() == false) {
@@ -128,7 +128,7 @@ public class Emprestimo {
 
 
     TimeUnit timeUnit;
-    public void devolucaoDeEmprestimo(Usuario usuario, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
+    public void devolucaoDeEmprestimo(Cliente usuario, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
         if (getSituacao() == 1 && isTheSameExemplar(exemplar)) {
 
             LocalDateTime dataDevolucao = LocalDateTime.now();
