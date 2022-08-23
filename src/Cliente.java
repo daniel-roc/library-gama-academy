@@ -1,55 +1,84 @@
 import java.util.ArrayList;
 
-public class Usuario {
-
+public class Cliente {
 
     private String nome;
-    private String cpf;
+    private String email;
     private String telefone;
-    private String matricula;
-
+    private String cpf;
+    private String rg;
+    private String endereco;
+    private String senha;
+    
     private ArrayList<Integer> listaCodigosExemplares = new ArrayList<Integer>(); //talvez usar um map para linkar usuario + codigo ?
+    
+    public Cliente(String nome, String email, String telefone, String cpf, String rg, String endereco, String senha) {
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.cpf = cpf;
+		this.rg = rg;
+		this.endereco = endereco;
+		this.senha = senha;
+	}
 
-    public Usuario(String nome, String cpf, String telefone, String matricula) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.matricula = matricula;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public String getTelefone() {
+		return telefone;
+	}
 
-    public String getTelefone() {
-        return telefone;
-    }
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public String getMatricula() {
-        return matricula;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
+	public String getRg() {
+		return rg;
+	}
 
-    public ArrayList<Integer> getListaCodigosExemplares() {
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public ArrayList<Integer> getListaCodigosExemplares() {
         return listaCodigosExemplares;
     }
 
