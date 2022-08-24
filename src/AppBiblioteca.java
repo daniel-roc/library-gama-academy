@@ -60,7 +60,10 @@ public class AppBiblioteca {
 //        emprestimo.devolucaoDeEmprestimo(usuario, livro, exemplar, busca);
         emprestimoAtrasado.devolucaoDeEmprestimo(usuario, livro, exemplar3, busca); // <= problema, pode-se gerar uma devolucao de um exemplar que foi gerado por outro emprestimo
 
-
+        // REALIZAR COMPRA
+        System.out.println(livro.getQuantidadeDeExemplares());
+        System.out.println(usuario.comprarLivro(livro)); 
+        System.out.println(livro.getQuantidadeDeExemplares());
 
 
 //        // PESQUISA DE LIVRO POR AUTOR

@@ -99,6 +99,14 @@ public class Cliente {
             System.out.println("Esse usuario não está com esse exemplar");
         }
     }
+    
+    public String comprarLivro(Livro livro) {
+    	if (livro.getQuantidadeDeExemplares() > 0) {
+    		livro.removerExemplar(1);
+    		return "Livro comprado com sucesso";
+		}
+    	return "Exemplar não disponível";
+    }
 
 
 //        listaCodigosExemplares.contains(listaExemplar.get(i).getCodigo());
