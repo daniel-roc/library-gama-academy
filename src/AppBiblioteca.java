@@ -7,11 +7,11 @@ public class AppBiblioteca {
 
         // DECLARAÇÃO DE VARIÁVEIS
         var usuario = new Cliente("Daniel", "email@dominio.com.br", "1199999-9999", "111222333-88", "44555666X", "Rua da rua, numero, bairro, cidade, UF", "password@123");
-
+        var usuario2 = new Cliente("José", "email@dominio.com.br", "1199999-9999", "111222333-88", "44555666X", "Rua da rua, numero, bairro, cidade, UF", "password@123");
         var autor = new Autor("Roger Lincoln");
-        var livro = new Livro("Um dia antes de amanhã", autor, "20/05/2022", 2, "Ed. Livro", "987654123");
+        var livro = new Livro("Um dia antes de amanhã", autor, "20/05/2022", 2, "Ed. Livro", "987654123", 25.0);
         var autor2 = new Autor("Roger Silva");
-        var livro2 = new Livro("A Espera de Um Milagre", autor, "20/05/2022", 2, "Ed. Livro", "987654123");
+        var livro2 = new Livro("A Espera de Um Milagre", autor, "20/05/2022", 2, "Ed. Livro", "987654123", 30.0);
         var exemplar = new Exemplar(1, true, false, livro, autor);
         var exemplar2 = new Exemplar(2, true, false, livro2, autor2);
         var exemplar3 = new Exemplar(3, true, false, livro, autor);
@@ -60,7 +60,11 @@ public class AppBiblioteca {
 //        emprestimo.devolucaoDeEmprestimo(usuario, livro, exemplar, busca);
         emprestimoAtrasado.devolucaoDeEmprestimo(usuario, livro, exemplar3, busca); // <= problema, pode-se gerar uma devolucao de um exemplar que foi gerado por outro emprestimo
 
-
+        // REALIZAR COMPRA
+        System.out.println(usuario.comprarLivro(livro, true));
+        System.out.println(usuario.comprarLivro(livro2, false));
+        System.out.println(usuario.getListaLivrosComprados());
+        System.out.println(usuario2.getListaLivrosComprados());
 
 
 //        // PESQUISA DE LIVRO POR AUTOR

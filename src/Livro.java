@@ -7,16 +7,24 @@ public class Livro {
     private int edicao;
     private String editora;
     private String ISBN;
+    private double precoCompra;
     private int quantidadeDeExemplares = 0;
 
-    public Livro(String titulo, Autor autor, String ano, int edicao, String editora, String iSBN) {
+	public Livro(String titulo, Autor autor, String ano, int edicao, String editora, String iSBN, double precoCompra) {
         this.titulo = titulo;
         this.autor = autor;
         this.ano = ano;
         this.edicao = edicao;
         this.editora = editora;
         ISBN = iSBN;
+        this.precoCompra = precoCompra;
     }
+	
+    @Override
+	public String toString() {
+		return "Livro [titulo=" + titulo + ", autor=" + autor + ", ano=" + ano + ", edicao=" + edicao + ", editora="
+				+ editora + ", ISBN=" + ISBN + "]";
+	}
 
     public String getTitulo() {
         return titulo;
@@ -73,6 +81,14 @@ public class Livro {
     private void setQuantidadeDeExemplares(int quantidadeDeExemplares) {
         this.quantidadeDeExemplares = quantidadeDeExemplares;
     }
+    
+	public double getPrecoCompra() {
+		return precoCompra;
+	}
+
+	public void setPrecoCompra(double precoCompra) {
+		this.precoCompra = precoCompra;
+	}
 
     public void removerExemplar(int n) {
         setQuantidadeDeExemplares(getQuantidadeDeExemplares() - n);
@@ -81,7 +97,7 @@ public class Livro {
     public void adicionarExemplar(int n) {
         setQuantidadeDeExemplares(getQuantidadeDeExemplares() + n);
     }
-
+    
     public boolean exemplarEstaDisponivel(){
         if(quantidadeDeExemplares >= 1){
             return true;
@@ -89,5 +105,6 @@ public class Livro {
             return false;
         }
     }
+
 
 }
