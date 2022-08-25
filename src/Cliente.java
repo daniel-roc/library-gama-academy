@@ -12,7 +12,9 @@ public class Cliente {
     
     private ArrayList<Integer> listaCodigosExemplares = new ArrayList<Integer>(); //talvez usar um map para linkar usuario + codigo ?
     
-    public Cliente(String nome, String email, String telefone, String cpf, String rg, String endereco, String senha) {
+    private ArrayList<String> listaLivrosComprados = new ArrayList<String>();
+    
+	public Cliente(String nome, String email, String telefone, String cpf, String rg, String endereco, String senha) {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
@@ -85,6 +87,15 @@ public class Cliente {
     public void setListaCodigosExemplares(ArrayList<Integer> listaCodigosExemplares) {
         this.listaCodigosExemplares = listaCodigosExemplares;
     }
+    
+    public ArrayList<String> getListaLivrosComprados() {
+		return listaLivrosComprados;
+	}
+
+	public void setListaLivrosComprados(ArrayList<String> listaLivrosComprados) {
+		this.listaLivrosComprados = listaLivrosComprados;
+	}
+
 
     public void associarUsuarioComExemplar(Exemplar exemplar){
 //        exemplarEmprestado++;
@@ -100,12 +111,12 @@ public class Cliente {
         }
     }
     
-    public String comprarLivro(Livro livro) {
-    	if (livro.getQuantidadeDeExemplares() > 0) {
-    		livro.removerExemplar(1);
-    		return "Livro comprado com sucesso";
+    public String comprarLivro(Livro livro, boolean pagamentoAprovado) {
+    	if (pagamentoAprovado) {
+    		this.listaLivrosComprados.add(livro.toString());
+    		return "Livro comprado com sucesso!";
 		}
-    	return "Exemplar não disponível";
+    	return "Compra não aprovada!";
     }
 
 
