@@ -9,12 +9,7 @@ public class Cliente {
 	private String rg;
 	private String endereco;
 	private String senha;
-
-	private ArrayList<Integer> listaCodigosExemplares = new ArrayList<Integer>(); // talvez usar um map para linkar
-																					// usuario + codigo ?
-
 	private ArrayList<String> listaLivrosComprados = new ArrayList<String>();
-
 	private ArrayList<String> listaLivrosEmprestados = new ArrayList<String>();
 
 	public Cliente(String nome, String email, String telefone, String cpf, String rg, String endereco, String senha) {
@@ -83,14 +78,6 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public ArrayList<Integer> getListaCodigosExemplares() {
-		return listaCodigosExemplares;
-	}
-
-	public void setListaCodigosExemplares(ArrayList<Integer> listaCodigosExemplares) {
-		this.listaCodigosExemplares = listaCodigosExemplares;
-	}
-
 	public ArrayList<String> getListaLivrosComprados() {
 		return listaLivrosComprados;
 	}
@@ -106,20 +93,6 @@ public class Cliente {
 	public void setListaLivrosEmprestados(ArrayList<String> listaLivrosEmprestados) {
 		this.listaLivrosEmprestados = listaLivrosEmprestados;
 	}
-
-//    public void associarUsuarioComExemplar(Exemplar exemplar){
-////        exemplarEmprestado++;
-//        listaCodigosExemplares.add(exemplar.getCodigo());
-//    }
-//
-//    public void desassociarUsuarioComExemplar(Exemplar exemplar){
-//        if(listaCodigosExemplares.contains(exemplar.getCodigo())){
-//            listaCodigosExemplares.remove(listaCodigosExemplares.indexOf(exemplar.getCodigo()));
-//            System.out.println("Exemplar devolvido com sucesso");
-//        }else{
-//            System.out.println("Esse usuario não está com esse exemplar");
-//        }
-//    }
 
 	public String comprarLivro(Livro livro, boolean pagamentoAprovado) {
 		if (pagamentoAprovado) {
@@ -147,14 +120,3 @@ public class Cliente {
 		return "Pagamento não aprovado!";
 	}
 }
-
-//        listaCodigosExemplares.contains(listaExemplar.get(i).getCodigo());
-//        for (Exemplar exemplarPesquisa : listaExemplar) {
-//            for(int i = 0; i <listaExemplar.size(); i++) {
-//                for (int j = 0; j < listaExemplar.size(); j++) {
-//                    if (lista.getCodigo(i) == user.getListaCodigosExemplares().get(j)) {
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
