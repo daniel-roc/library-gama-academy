@@ -8,9 +8,9 @@ public class Livro {
     private String editora;
     private String ISBN;
     private double precoCompra;
-    private int quantidadeDeExemplares = 0;
+    private double precoEmprestimo;
 
-	public Livro(String titulo, Autor autor, String ano, int edicao, String editora, String iSBN, double precoCompra) {
+	public Livro(String titulo, Autor autor, String ano, int edicao, String editora, String iSBN, double precoCompra, double precoEmprestimo) {
         this.titulo = titulo;
         this.autor = autor;
         this.ano = ano;
@@ -18,6 +18,7 @@ public class Livro {
         this.editora = editora;
         ISBN = iSBN;
         this.precoCompra = precoCompra;
+        this.precoEmprestimo = precoEmprestimo;
     }
 	
     @Override
@@ -74,14 +75,6 @@ public class Livro {
         ISBN = iSBN;
     }
 
-    public int getQuantidadeDeExemplares() {
-        return quantidadeDeExemplares;
-    }
-
-    private void setQuantidadeDeExemplares(int quantidadeDeExemplares) {
-        this.quantidadeDeExemplares = quantidadeDeExemplares;
-    }
-    
 	public double getPrecoCompra() {
 		return precoCompra;
 	}
@@ -89,22 +82,13 @@ public class Livro {
 	public void setPrecoCompra(double precoCompra) {
 		this.precoCompra = precoCompra;
 	}
+	
+	public double getPrecoEmprestimo() {
+		return precoEmprestimo;
+	}
 
-    public void removerExemplar(int n) {
-        setQuantidadeDeExemplares(getQuantidadeDeExemplares() - n);
-    }
-
-    public void adicionarExemplar(int n) {
-        setQuantidadeDeExemplares(getQuantidadeDeExemplares() + n);
-    }
-    
-    public boolean exemplarEstaDisponivel(){
-        if(quantidadeDeExemplares >= 1){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
+	public void setPrecoEmprestimo(double precoEmprestimo) {
+		this.precoEmprestimo = precoEmprestimo;
+	}
 
 }

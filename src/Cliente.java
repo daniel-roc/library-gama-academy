@@ -14,6 +14,8 @@ public class Cliente {
     
     private ArrayList<String> listaLivrosComprados = new ArrayList<String>();
     
+    private ArrayList<String> listaLivrosEmprestados = new ArrayList<String>();
+    
 	public Cliente(String nome, String email, String telefone, String cpf, String rg, String endereco, String senha) {
 		this.nome = nome;
 		this.email = email;
@@ -95,7 +97,14 @@ public class Cliente {
 	public void setListaLivrosComprados(ArrayList<String> listaLivrosComprados) {
 		this.listaLivrosComprados = listaLivrosComprados;
 	}
+	
+	public ArrayList<String> getListaLivrosEmprestados() {
+		return listaLivrosEmprestados;
+	}
 
+	public void setListaLivrosEmprestados(ArrayList<String> listaLivrosEmprestados) {
+		this.listaLivrosEmprestados = listaLivrosEmprestados;
+	}
 
     public void associarUsuarioComExemplar(Exemplar exemplar){
 //        exemplarEmprestado++;
@@ -117,6 +126,21 @@ public class Cliente {
     		return "Livro comprado com sucesso!";
 		}
     	return "Compra não aprovada!";
+    }
+    
+    public String realizarEmprestimo(Cliente cliente, Livro livro, boolean pagamentoAprovado) {
+    	
+    	var emprestimo = new Emprestimo(cliente, livro);
+    	
+    	if (emprestimo.livroJaEmprestado(cliente, livro) == false) {
+        	if (pagamentoAprovado) {
+    			emprestimo.confirmarEmprestimo(cliente, livro);
+    			this.listaLivrosEmprestados.add(livro.toString());
+    			return "Livro emprestado com sucesso!";
+    		}
+        	return "Empréstimo não aprovado";
+		}
+    	return "Livro já emprestado para o solicitante!";
     }
 
 
