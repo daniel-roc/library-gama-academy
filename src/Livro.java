@@ -35,8 +35,8 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public Autor getAutor() {
-        return autor;
+    public String getAutor() {
+        return autor.getNome();
     }
 
     public void setAutor(Autor autor) {
