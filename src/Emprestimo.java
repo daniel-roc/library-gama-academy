@@ -12,7 +12,7 @@ public class Emprestimo {
     private LocalDateTime dataDeEntregaReal;
     private int duracaoEmprestimo = 15;
 
-    Exemplar exemplarEmprestado;
+//    Exemplar exemplarEmprestado;
 
     public Emprestimo(Cliente cliente, Livro livro) {
     	this.cliente = cliente;
@@ -76,42 +76,41 @@ public class Emprestimo {
         gerarDatasEmprestimo(dataEmprestimo);
     }
 
-    public void emprestmoDevolvido(LocalDateTime data) {
+    public void emprestimoDevolvido(LocalDateTime data) {
         setDataDeEntregaReal(data);
-        setSituacao(0);
     }
 
 
-    TimeUnit timeUnit;
-    public void devolucaoDeEmprestimo(Cliente usuario, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
-        if (getSituacao() == 1 && livroJaEmprestado(exemplar)) {
-
-            LocalDateTime dataDevolucao = LocalDateTime.now();
-            livro.adicionarExemplar(1);
-            emprestmoDevolvido(dataDevolucao);
-            exemplar.setEmprestada(false);
-            exemplar.setCativa(true);
-            usuario.desassociarUsuarioComExemplar(exemplar);
-//            System.out.println("Exemplar devolvido com sucesso");
-
-            try {
-                if (dataPrevistaDeDevolucao.isBefore(dataDeEntregaReal)) {
-                    Period tempoAtraso = Period.between(dataPrevistaDeDevolucao.toLocalDate(), dataDeEntregaReal.toLocalDate());
-                    int diasDeAtraso = tempoAtraso.getDays();
-                    System.out.println(diasDeAtraso);
-                    double multa = diasDeAtraso * 0.50;
-                    System.out.println("Essa devolução gerou uma multa de " + multa + " reais");
-                }
-            } catch (Exception NullPointerException) {
-
-            }
-
-        } else if(livroJaEmprestado(exemplar) == false) {
-            System.out.println("O exemplar do livro não condiz com o empréstimo");
-        }else{
-            System.out.println("O exemplar do livro não possui empréstimo");
-        }
-
-    }
+//    TimeUnit timeUnit;
+//    public void devolucaoDeEmprestimo(Cliente usuario, Livro livro, Exemplar exemplar, ArrayList<Exemplar> listaExemplar) {
+//        if (getSituacao() == 1 && livroJaEmprestado(exemplar)) {
+//
+//            LocalDateTime dataDevolucao = LocalDateTime.now();
+//            livro.adicionarExemplar(1);
+//            emprestimoDevolvido(dataDevolucao);
+//            exemplar.setEmprestada(false);
+//            exemplar.setCativa(true);
+//            usuario.desassociarUsuarioComExemplar(exemplar);
+////            System.out.println("Exemplar devolvido com sucesso");
+//
+//            try {
+//                if (dataPrevistaDeDevolucao.isBefore(dataDeEntregaReal)) {
+//                    Period tempoAtraso = Period.between(dataPrevistaDeDevolucao.toLocalDate(), dataDeEntregaReal.toLocalDate());
+//                    int diasDeAtraso = tempoAtraso.getDays();
+//                    System.out.println(diasDeAtraso);
+//                    double multa = diasDeAtraso * 0.50;
+//                    System.out.println("Essa devolução gerou uma multa de " + multa + " reais");
+//                }
+//            } catch (Exception NullPointerException) {
+//
+//            }
+//
+//        } else if(livroJaEmprestado(exemplar) == false) {
+//            System.out.println("O exemplar do livro não condiz com o empréstimo");
+//        }else{
+//            System.out.println("O exemplar do livro não possui empréstimo");
+//        }
+//
+//    }
 
 }
