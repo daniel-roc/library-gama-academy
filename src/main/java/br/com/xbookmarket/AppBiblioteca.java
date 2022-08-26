@@ -1,3 +1,4 @@
+package br.com.xbookmarket;
 import java.util.ArrayList;
 
 public class AppBiblioteca {
@@ -5,14 +6,14 @@ public class AppBiblioteca {
     public static void main(String[] args) {
 
         // BASE DE DADOS
-        var usuario = new Cliente("Daniel", "email@dominio.com.br", "1199999-9999", "111222333-88", "44555666X", "Rua da rua, numero, bairro, cidade, UF", "password@123");
-        var usuario2 = new Cliente("José", "email@dominio.com.br", "1199999-9999", "111222333-88", "44555666X", "Rua da rua, numero, bairro, cidade, UF", "password@123");
+        Cliente usuario = new Cliente("Daniel", "email@dominio.com.br", "1199999-9999", "111222333-88", "44555666X", "Rua da rua, numero, bairro, cidade, UF", "password@123");
+        Cliente usuario2 = new Cliente("José", "email@dominio.com.br", "1199999-9999", "111222333-88", "44555666X", "Rua da rua, numero, bairro, cidade, UF", "password@123");
         
-        var autor = new Autor("Roger Lincoln");
-        var autor2 = new Autor("André Silva");
+        Autor autor = new Autor("Roger Lincoln");
+        Autor autor2 = new Autor("André Silva");
         
-        var livro = new Livro("Um dia antes de amanhã", autor, "20/05/2022", 2, "Ed. Livro", "987654123", 25.0, 15.0);
-        var livro2 = new Livro("A Espera de Um Milagre", autor2, "20/05/2022", 2, "Ed. Livro", "987654123", 30.0, 15.0);
+        Livro livro = new Livro("Um dia antes de amanhã", autor, "20/05/2022", 2, "Ed. Livro", "987654123", 25.0, 15.0);
+        Livro livro2 = new Livro("A Espera de Um Milagre", autor2, "20/05/2022", 2, "Ed. Livro", "987654123", 30.0, 15.0);
 
         // LISTA DE EXEMPLARES PARA PESQUISA
         ArrayList<Livro> busca = new ArrayList<Livro>();

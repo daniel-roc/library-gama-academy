@@ -1,3 +1,4 @@
+package br.com.xbookmarket;
 import java.util.ArrayList;
 
 public class Cliente {
@@ -104,7 +105,7 @@ public class Cliente {
 
 	public String realizarOuRenovarEmprestimo(Cliente cliente, Livro livro, boolean pagamentoAprovado) {
 
-		var emprestimo = new Emprestimo(cliente, livro);
+		Emprestimo emprestimo = new Emprestimo(cliente, livro);
 
 		if (pagamentoAprovado) {
 			if (emprestimo.livroJaEmprestado(cliente, livro) == false) {
