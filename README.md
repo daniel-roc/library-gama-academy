@@ -9,7 +9,7 @@
 - [Funcionalidades](#funcionalidades)  
 - [Arquitetura](#arquitetura)    
 - [Tecnologias](#tecnologias)
-- [Plano de Testes](#plano-de-testes)  
+- [Plano de Testes e Apresentação](#plano-de-testes)  
 - [Testes](#testes)
 
 </br>
@@ -59,9 +59,10 @@ A livraria XBookMarket é um sistema de biblioteca desenvolvido em cumprimento d
 </br>
 </br>
 
-## **Plano de Testes**
+## **Plano de Testes e Apresentação**
 
-[Clique aqui para acessar o Plano de Testes](https://bit.ly/3Koj3jg)
+[Plano de Testes](https://bit.ly/3Koj3jg)
+[Apresentação dos Casos de Teste](https://bit.ly/3CS7qj9)
 
 </br>
 </br>
