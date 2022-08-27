@@ -97,7 +97,7 @@ public class Cliente {
 
 	public String comprarLivro(Livro livro, boolean pagamentoAprovado) {
 		if (pagamentoAprovado) {
-			this.listaLivrosComprados.add(livro.toString());
+			this.listaLivrosComprados.add(livro.getTitulo());
 			return "Livro comprado com sucesso!";
 		}
 		return "Compra não aprovada!";
@@ -108,10 +108,12 @@ public class Cliente {
 		Emprestimo emprestimo = new Emprestimo(cliente, livro);
 
 		if (pagamentoAprovado) {
+			
 			if (emprestimo.livroJaEmprestado(cliente, livro) == false) {
 				emprestimo.confirmarEmprestimo(cliente, livro);
-				this.listaLivrosEmprestados.add(livro.toString());
+				this.listaLivrosEmprestados.add(livro.getTitulo());
 				return "Livro emprestado com sucesso! Data de término: " + emprestimo.getDataPrevistaDeDevolucao();
+				
 			} else if (emprestimo.livroJaEmprestado(cliente, livro) == true) {
 				emprestimo.confirmarEmprestimo(cliente, livro);
 				return "Empréstimo renovado com sucesso! Nova data de término: "
