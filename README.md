@@ -35,7 +35,7 @@ A livraria XBookMarket é um sistema de biblioteca desenvolvido em cumprimento d
 ## **Arquitetura**
 
 ```
-📁 library-gama-academy
+📁 xbookmarket
   |
   |-   📁 src
   |    |- 📄 AppBiblioteca.java
