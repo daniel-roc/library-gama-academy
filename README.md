@@ -14,20 +14,20 @@
 
 </br>
 
-
 ## **Apresentação**
 
-A livraria XBookMarket é um sistema de biblioteca em cumprimento desafio proposto no curso de QE&A Automation Academy da [Gama Academy](https://www.gama.academy/) em parceria com a [Cognizant](https://www.cognizant.com/us/en).
+A livraria XBookMarket é um sistema de biblioteca desenvolvido em cumprimento do desafio proposto no curso de QE&A Automation Academy da [Gama Academy](https://www.gama.academy/) em parceria com a [Cognizant](https://www.cognizant.com/us/en).
 
 </br>
 </br>
 
 ## **Funcionalidades**
 
-- [x] Listar exemplares
-- [x] Pesquisar por autores
-- [x] Gerar um empréstimo
-- [x] Calcular o valor da multa caso a devolução seja fora do prazo
+- [x] Cadastro de Clientes
+- [x] Pesquisar livros por autores
+- [x] Pesquisar livros por título
+- [x] Compra de livros
+- [x] Empréstimo de livros
 
 </br>
 </br>
@@ -35,23 +35,14 @@ A livraria XBookMarket é um sistema de biblioteca em cumprimento desafio propos
 ## **Arquitetura**
 
 ```
-📁 library-gama-academy
-  |
-  |-  📁 out
-  |    |- 📄 AppBiblioteca.class
-  |    |- 📄 Autor.class
-  |    |- 📄 Emprestimo.class
-  |    |- 📄 Exemplar.class
-  |    |- 📄 Livro.class
-  |    |- 📄 Usuario.class
+📁 xbookmarket
   |
   |-   📁 src
   |    |- 📄 AppBiblioteca.java
   |    |- 📄 Autor.java
+  |    |- 📄 Cliente.java
   |    |- 📄 Emprestimo.java
-  |    |- 📄 Exemplar.java
   |    |- 📄 Livro.java
-  |    |- 📄 Usuario.java
 
 ```
 </br>
@@ -60,14 +51,17 @@ A livraria XBookMarket é um sistema de biblioteca em cumprimento desafio propos
 ## **Tecnologias**
 
 <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"/>
-<img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white"/>
+<img src="https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"/>
+<img src="https://img.shields.io/badge/Junit5-25A162?style=for-the-badge&logo=junit5&logoColor=white"/>
+<img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=Selenium&logoColor=white"/>
+<img src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white"/>
 
 </br>
 </br>
 
 ## **Plano de Testes**
 
-*[Clique aqui para acessar o Plano de Testes](https://bit.ly/3Koj3jg)
+[Clique aqui para acessar o Plano de Testes](https://bit.ly/3Koj3jg)
 
 </br>
 </br>
@@ -77,7 +71,9 @@ A livraria XBookMarket é um sistema de biblioteca em cumprimento desafio propos
 Para fins de demonstração, foram utilizados Website, API e Aplicativos de terceiros:
 
 https://github.com/ivanmpe/marvel-api-test
+</br>
 https://demoqa.com/automation-practice-form
+</br>
 https://demoqa.com/swagger/
 
 ### Testes Funcionais (Selenium WebDriver + Cucumber):
@@ -95,7 +91,7 @@ https://github.com/carolana/testes-perfomance-jmeter.git
 </br>
 </br>
 
-## **Autores**
+## **Participantes*
 
 - ### **Ana Carolina Pereira dos Santos**
     * [<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />](https://www.linkedin.com/in/carol-santos-1356b2122/) 
