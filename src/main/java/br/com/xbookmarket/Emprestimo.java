@@ -9,13 +9,17 @@ public class Emprestimo {
     private LocalDateTime dataPrevistaDeDevolucao;
     private LocalDateTime dataDeEntregaReal;
     private int duracaoEmprestimo = 15;
+    
+        public Emprestimo(Cliente cliente, Livro livro) {
+		super();
+		this.cliente = cliente;
+		this.livro = livro;
+		this.dataDeEmprestimo = null;
+		this.dataPrevistaDeDevolucao = null;
+		this.dataDeEntregaReal = null;
+	}
 
-    public Emprestimo(Cliente cliente, Livro livro) {
-    	this.cliente = cliente;
-        this.livro = livro;
-    }
-
-    public LocalDateTime getDataDeEmprestimo() {
+	public LocalDateTime getDataDeEmprestimo() {
         return dataDeEmprestimo;
     }
 
@@ -55,7 +59,7 @@ public class Emprestimo {
     }
 
     public void gerarDatasEmprestimo(LocalDateTime data) {
-        //setar data atual
+        //data atual
         setDataDeEmprestimo(data);
 
         //gerar duracao do emprestimo e adicionar na data
